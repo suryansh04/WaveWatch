@@ -1,3 +1,6 @@
+/* NOTE: Full file provided per your request. */
+
+/* Map container */
 .map-container {
   width: 100%;
   height: 100vh;
@@ -170,7 +173,6 @@ input:checked + .slider:before {
   background-color: #3b82f6;
 }
 
-/* New: Orange indicator for hotspots */
 .legend-indicator.orange {
   background-color: #f59e0b;
 }
@@ -214,23 +216,12 @@ input:checked + .slider:before {
   background-color: #ec4899;
 }
 
-/* New: Orange dot for hotspots */
 .legend-dot.orange {
   background-color: #f59e0b;
 }
-
-/* New: Gradient dot for heatmap */
-.legend-dot.gradient {
-  background: linear-gradient(
-    90deg,
-    #3b82f6 0%,
-    #10b981 25%,
-    #f59e0b 50%,
-    #ef4444 75%,
-    #dc2626 100%
-  );
+.legend-dot.green {
+  background-color: #10b981;
 }
-
 /* Loading and Error States */
 .loading-overlay,
 .error-overlay {
@@ -303,6 +294,34 @@ input:checked + .slider:before {
   transform: scale(1.1);
 }
 
+/* NEW: Social Media Marker Styles */
+/* Restyled social media marker to Reddit theme and increased size */
+.social-media-pin-icon {
+  background: transparent !important;
+  border: none !important;
+}
+
+.social-media-marker {
+  background: #ffffff;
+  border-radius: 50%;
+  padding: 6px; /* increased from 4px */
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #ff4500; /* subtle Reddit ring */
+}
+
+.social-media-marker:hover {
+  transform: scale(1.2);
+  box-shadow: 0 6px 14px rgba(255, 69, 0, 0.45); /* Reddit orange glow */
+}
+
+.social-media-marker svg {
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+}
+
 /* Popup Styles */
 .marker-popup {
   min-width: 200px;
@@ -353,15 +372,56 @@ input:checked + .slider:before {
   margin-top: 0.5rem !important;
 }
 
-/* New: Hotspot Popup Styles */
-.hotspot-popup {
+/* NEW: Social Media Popup Styles */
+/* Switch popup heading color to Reddit orange */
+.social-media-popup {
+  min-width: 220px;
+  font-family: inherit;
+}
+
+.social-media-popup h3 {
+  margin: 0 0 0.75rem 0;
+  color: #ff4500; /* Reddit orange */
+  font-size: 1.1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.social-media-popup p {
+  margin: 0.25rem 0;
+  font-size: 0.875rem;
+  color: #475569;
+}
+
+.social-media-popup strong {
+  color: #1e293b;
+  font-weight: 500;
+}
+
+/* Hotspot Popup Styles */
+.hotspot-popup,
+.report-hotspot-popup,
+.social-hotspot-popup {
   min-width: 250px;
   font-family: inherit;
 }
 
-.hotspot-popup h3 {
+.hotspot-popup h3,
+.report-hotspot-popup h3 {
   margin: 0 0 0.75rem 0;
   color: #dc2626;
+  font-size: 1.2rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.social-hotspot-popup h3 {
+  margin: 0 0 0.75rem 0;
+  color: #1d4ed8;
   font-size: 1.2rem;
   font-weight: 700;
   display: flex;
@@ -387,199 +447,21 @@ input:checked + .slider:before {
   font-weight: 600;
 }
 
-.hotspot-report-types {
+.hotspot-report-types,
+.hotspot-sources {
   margin-top: 0.75rem;
   font-size: 0.875rem;
   color: #64748b;
   line-height: 1.4;
 }
 
-.hotspot-report-types strong {
+.hotspot-report-types strong,
+.hotspot-sources strong {
   color: #1e293b;
   font-weight: 600;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .controls-panel {
-    top: 10px;
-    right: 10px;
-    left: 10px;
-    max-width: none;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .toggle-section {
-    padding: 12px;
-    gap: 12px;
-  }
-
-  .filter-section {
-    padding: 10px;
-  }
-
-  .toggle-item {
-    gap: 10px;
-  }
-
-  .toggle-label {
-    font-size: 0.8rem;
-  }
-
-  .hotspot-popup {
-    min-width: 200px;
-  }
-}
-
-@media (max-width: 480px) {
-  .controls-panel {
-    top: 8px;
-    right: 8px;
-    left: 8px;
-  }
-
-  .toggle-section,
-  .filter-section,
-  .mini-legend {
-    padding: 10px;
-  }
-
-  .toggle-switch {
-    width: 38px;
-    height: 20px;
-  }
-
-  .slider:before {
-    height: 14px;
-    width: 14px;
-    left: 3px;
-    bottom: 3px;
-  }
-
-  input:checked + .slider:before {
-    transform: translateX(16px);
-  }
-
-  .toggle-label {
-    font-size: 0.75rem;
-  }
-
-  .legend-row {
-    font-size: 0.75rem;
-  }
-
-  .filter-select {
-    font-size: 0.8rem;
-  }
-
-  .hotspot-popup {
-    min-width: 180px;
-  }
-
-  .hotspot-popup h3 {
-    font-size: 1rem;
-  }
-}
-
-/* Leaflet Override Styles */
-.leaflet-popup-content-wrapper {
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.leaflet-popup-tip {
-  border-top-color: white;
-}
-
-.leaflet-control-zoom a {
-  color: #475569 !important;
-  border: 1px solid #e2e8f0 !important;
-}
-
-.leaflet-control-zoom a:hover {
-  color: #0ea5e9 !important;
-  border-color: #0ea5e9 !important;
-}
-
-/* Hover Effects */
-.filter-section:hover,
-.toggle-section:hover,
-.mini-legend:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  transition: box-shadow 0.2s ease;
-}
-
-.filter-select:hover {
-  color: #0ea5e9;
-}
-
-/* Focus States */
-.filter-select:focus {
-  outline: 2px solid #3b82f6;
-  outline-offset: 2px;
-  border-radius: 4px;
-}
-
-.toggle-switch input:focus + .slider {
-  outline: 2px solid #3b82f6;
-  outline-offset: 2px;
-}
-
-/* Animation for panel appearance */
-.controls-panel > * {
-  animation: slideInRight 0.3s ease-out;
-}
-
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-/* Custom scrollbar for mobile */
-.controls-panel::-webkit-scrollbar {
-  width: 4px;
-}
-
-.controls-panel::-webkit-scrollbar-track {
-  background: #f1f5f9;
-  border-radius: 2px;
-}
-
-.controls-panel::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
-  border-radius: 2px;
-}
-
-.controls-panel::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
-}
-
-/* New: Hotspot circle hover effects */
-.leaflet-interactive:hover {
-  cursor: pointer;
-}
-
-/* New: Custom styles for hotspot intensity indicators */
-.hotspot-intensity-high {
-  background: linear-gradient(45deg, #dc2626, #fca5a5);
-}
-
-.hotspot-intensity-medium {
-  background: linear-gradient(45deg, #f59e0b, #fbbf24);
-}
-
-.hotspot-intensity-low {
-  background: linear-gradient(45deg, #eab308, #fde047);
-}
-
-/* New: Detail button in popup */
+/* Detail button in popup */
 .detail-btn {
   background: linear-gradient(135deg, #3b82f6, #1d4ed8);
   color: white;
@@ -601,7 +483,7 @@ input:checked + .slider:before {
   box-shadow: 0 4px 8px rgba(59, 130, 246, 0.4);
 }
 
-/* New: Modal Styles */
+/* Modal Styles */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -685,6 +567,40 @@ input:checked + .slider:before {
   align-items: center;
   margin-bottom: 1.5rem;
   flex-wrap: wrap;
+}
+
+/* NEW: Social Media Header */
+/* Recolor social source badge to Reddit theme */
+.social-header {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.social-source-badge {
+  background: linear-gradient(135deg, #ff4500, #ff6a33); /* Reddit orange */
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px rgba(255, 69, 0, 0.35); /* orange glow */
+}
+
+.flood-detection-badge {
+  background: linear-gradient(135deg, #16a34a, #22c55e);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px rgba(22, 163, 74, 0.3);
 }
 
 .report-type-badge {
@@ -795,9 +711,6 @@ input:checked + .slider:before {
 }
 
 .report-description {
-  background: #f8fafc;
-  padding: 1rem;
-  border-radius: 8px;
   background: #f8fafc;
   padding: 1rem;
   border-radius: 8px;
@@ -950,8 +863,136 @@ input:checked + .slider:before {
   box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
 }
 
-/* Mobile Responsive */
+/* Hover Effects */
+.filter-section:hover,
+.toggle-section:hover,
+.mini-legend:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: box-shadow 0.2s ease;
+}
+
+.filter-select:hover {
+  color: #0ea5e9;
+}
+
+/* Focus States */
+.filter-select:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.toggle-switch input:focus + .slider {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Animation for panel appearance */
+.controls-panel > * {
+  animation: slideInRight 0.3s ease-out;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Leaflet Override Styles */
+.leaflet-popup-content-wrapper {
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.leaflet-popup-tip {
+  border-top-color: white;
+}
+
+.leaflet-control-zoom a {
+  color: #475569 !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+.leaflet-control-zoom a:hover {
+  color: #0ea5e9 !important;
+  border-color: #0ea5e9 !important;
+}
+
+.leaflet-interactive:hover {
+  cursor: pointer;
+}
+
+/* Custom scrollbar for mobile */
+.controls-panel::-webkit-scrollbar {
+  width: 4px;
+}
+
+.controls-panel::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 2px;
+}
+
+.controls-panel::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 2px;
+}
+
+.controls-panel::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 1024px) {
+  .controls-panel {
+    max-width: 260px;
+  }
+
+  .modal-content {
+    max-width: 90vw;
+  }
+}
+
 @media (max-width: 768px) {
+  .controls-panel {
+    top: 10px;
+    right: 10px;
+    left: 10px;
+    max-width: none;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .toggle-section {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .filter-section {
+    padding: 10px;
+  }
+
+  .toggle-item {
+    gap: 10px;
+  }
+
+  .toggle-label {
+    font-size: 0.8rem;
+  }
+
+  .hotspot-popup {
+    min-width: 200px;
+  }
+
+  .social-media-popup {
+    min-width: 200px;
+  }
+
+  /* Modal responsiveness */
   .modal-content {
     margin: 10px;
     max-height: 95vh;
@@ -969,7 +1010,8 @@ input:checked + .slider:before {
     font-size: 1.25rem;
   }
 
-  .report-header {
+  .report-header,
+  .social-header {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.75rem;
@@ -995,6 +1037,65 @@ input:checked + .slider:before {
 }
 
 @media (max-width: 480px) {
+  .controls-panel {
+    top: 8px;
+    right: 8px;
+    left: 8px;
+  }
+
+  .toggle-section,
+  .filter-section,
+  .mini-legend {
+    padding: 10px;
+  }
+
+  .toggle-switch {
+    width: 38px;
+    height: 20px;
+  }
+
+  .slider:before {
+    height: 14px;
+    width: 14px;
+    left: 3px;
+    bottom: 3px;
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(16px);
+  }
+
+  .toggle-label {
+    font-size: 0.75rem;
+  }
+
+  .legend-row {
+    font-size: 0.75rem;
+  }
+
+  .filter-select {
+    font-size: 0.8rem;
+  }
+
+  .hotspot-popup,
+  .report-hotspot-popup,
+  .social-hotspot-popup {
+    min-width: 180px;
+  }
+
+  .hotspot-popup h3 {
+    font-size: 1rem;
+  }
+
+  .social-media-popup {
+    min-width: 180px;
+  }
+
+  .social-media-popup h3 {
+    font-size: 1rem;
+  }
+
+  /* Modal mobile responsiveness */
   .modal-overlay {
     padding: 10px;
   }
@@ -1016,7 +1117,9 @@ input:checked + .slider:before {
   }
 
   .urgency-badge,
-  .report-type-badge {
+  .report-type-badge,
+  .social-source-badge,
+  .flood-detection-badge {
     font-size: 0.75rem;
     padding: 0.4rem 0.8rem;
   }
@@ -1034,8 +1137,278 @@ input:checked + .slider:before {
     font-size: 0.8rem;
   }
 
-  .image-container,
-  .video-container {
-    height: 160px;
+  /* keep marker proportionally larger on mobile */
+  .social-media-marker {
+    padding: 5px;
+  }
+
+  .social-media-marker svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+@media (max-width: 360px) {
+  .controls-panel {
+    top: 5px;
+    right: 5px;
+    left: 5px;
+  }
+
+  .toggle-section,
+  .filter-section,
+  .mini-legend {
+    padding: 8px;
+  }
+
+  .toggle-switch {
+    width: 34px;
+    height: 18px;
+  }
+
+  .slider:before {
+    height: 12px;
+    width: 12px;
+    left: 3px;
+    bottom: 3px;
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(14px);
+  }
+
+  .toggle-label,
+  .legend-row,
+  .filter-select {
+    font-size: 0.7rem;
+  }
+
+  .modal-content {
+    max-height: 98vh;
+  }
+
+  .modal-header {
+    padding: 0.5rem 0.75rem;
+  }
+
+  .modal-body {
+    padding: 0.75rem;
+  }
+
+  .modal-title {
+    font-size: 1rem;
+  }
+
+  .urgency-badge,
+  .report-type-badge,
+  .social-source-badge,
+  .flood-detection-badge {
+    font-size: 0.7rem;
+    padding: 0.3rem 0.6rem;
+  }
+
+  .info-grid {
+    gap: 0.5rem;
+  }
+
+  .info-item {
+    padding: 0.5rem;
+  }
+
+  .external-link-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+  }
+
+  /* smallest breakpoint sizing */
+  .social-media-marker {
+    padding: 4px;
+  }
+
+  .social-media-marker svg {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+/* High-resolution displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .pin-marker,
+  .social-media-marker {
+    image-rendering: -webkit-optimize-contrast;
+  }
+}
+
+/* Dark mode support (if needed) */
+@media (prefers-color-scheme: dark) {
+  .map-container {
+    background-color: #0f172a;
+  }
+
+  .controls-panel > *,
+  .modal-content {
+    background: #1e293b;
+    border-color: #334155;
+    color: #e2e8f0;
+  }
+
+  .modal-header {
+    background: linear-gradient(135deg, #1e293b, #334155);
+  }
+
+  .modal-title,
+  .section-title,
+  .info-value,
+  .toggle-label {
+    color: #e2e8f0;
+  }
+
+  .info-label {
+    color: #94a3b8;
+  }
+
+  .filter-select,
+  .marker-popup,
+  .social-media-popup,
+  .hotspot-popup {
+    color: #e2e8f0;
+  }
+
+  .report-description {
+    background: #334155;
+    color: #cbd5e1;
+  }
+
+  .info-item {
+    background: #334155;
+    border-color: #475569;
+  }
+
+  .info-item:hover {
+    border-color: #60a5fa;
+  }
+}
+
+/* Print styles */
+@media print {
+  .controls-panel,
+  .modal-overlay {
+    display: none;
+  }
+
+  .map-container,
+  .leaflet-map {
+    width: 100%;
+    height: 80vh;
+  }
+}
+
+/* Hotspots list (right column under filter) */
+.hotspots-list {
+  background: white;
+  border-radius: 8px;
+  padding: 10px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  max-height: 220px;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* header row */
+.hotspots-list-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #f1f5f9;
+  font-size: 0.95rem;
+  color: #374151;
+  font-weight: 600;
+}
+
+.hotspots-count {
+  background: #eef2ff;
+  color: #1e40af;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+}
+
+/* empty state */
+.hotspot-empty {
+  color: #64748b;
+  font-size: 0.85rem;
+  padding: 8px 0;
+}
+
+/* items */
+.hotspot-items {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.hotspot-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #ffffff;
+  border: 1px solid #f1f5f9;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.12s ease;
+  width: 100%;
+}
+
+.hotspot-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(16, 24, 40, 0.06);
+}
+
+.hotspot-item.report .hotspot-dot {
+  background: linear-gradient(135deg, #f97316, #dc2626);
+}
+
+.hotspot-item.social .hotspot-dot {
+  background: linear-gradient(135deg, #3b82f6, #06b6d4);
+}
+
+.hotspot-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+.hotspot-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.hotspot-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.hotspot-sub {
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+/* make sure hotspots-list shrinks on smaller screens */
+@media (max-width: 768px) {
+  .hotspots-list {
+    max-height: 160px;
   }
 }

@@ -3,6 +3,8 @@ import Header from "../components/Header/Header";
 import ActiveAlerts from "../components/ActiveAlerts/ActiveAlerts";
 import StatsCards from "../components/StatsCards/StatsCards";
 import MapComponent from "../components/MapComponent/MapComponent";
+import LineChartComponent from "../components/LineCharts/LineChartComponent";
+import { Line, LineChart } from "recharts";
 const Dashboard = () => {
   return (
     <div>
@@ -17,6 +19,7 @@ const Dashboard = () => {
 
         <div className="right-section">
           <StatsCards />
+          <LineChartComponent />
         </div>
       </div>
     </div>

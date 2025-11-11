@@ -1,0 +1,53 @@
+.line-chart-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 2px 10px rgba(16, 24, 40, 0.06);
+  min-height: 360px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* header row */
+.line-chart-header {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: 8px;
+}
+
+.line-chart-header h3 {
+  font-size: 18px;
+  margin: 0;
+  color: #0f172a; /* slate-900 */
+  font-weight: 600;
+}
+
+.line-chart-sub {
+  font-size: 13px;
+  color: #475569; /* slate-600 */
+  margin: 0;
+}
+
+/* body: chart container or loading */
+.line-chart-body {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* simple loading text */
+.chart-loading {
+  color: #64748b;
+  font-size: 14px;
+}
+
+/* small responsive tweaks */
+@media (max-width: 768px) {
+  .line-chart-card {
+    padding: 14px;
+    min-height: 260px;
+  }
+}

@@ -1,0 +1,580 @@
+/* Updated all CSS class names to use social-media-analysis- prefix */
+
+/* Main container with sidebar offset */
+.social-media-analysis-container {
+  margin-left: 280px; /* Increased from 250px to account for WaveWatch sidebar */
+  padding: 24px;
+  min-height: 100vh;
+  /* Updated background to ocean-inspired gradient */
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  transition: margin-left 0.3s ease;
+}
+
+/* Header section */
+.social-media-analysis-header {
+  margin-bottom: 32px;
+  /* Added subtle ocean-themed styling */
+  padding: 24px;
+  /* background: linear-gradient(135deg, #0077b6 0%, #0096c7 100%); */
+  border-radius: 16px;
+  color: white;
+  /* box-shadow: 0 4px 20px rgba(0, 119, 182, 0.15); */
+}
+
+.social-media-analysis-header h1 {
+  /* Updated to white for ocean theme header */
+  color: black;
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 8px;
+  /* text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+}
+
+.social-media-analysis-header p {
+  /* Updated to light blue for better contrast */
+  color: #0096c7;
+  font-size: 1.1rem;
+  text-align: center;
+  margin: 0;
+}
+
+/* Loading spinner */
+.social-media-analysis-loading-spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+}
+
+.social-media-analysis-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #e2e8f0;
+  /* Updated spinner color to match ocean theme */
+  border-left: 4px solid #0077b6;
+  border-radius: 50%;
+  animation: social-media-analysis-spin 1s linear infinite;
+}
+
+@keyframes social-media-analysis-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.social-media-analysis-loading-spinner p {
+  margin-top: 16px;
+  color: #718096;
+  font-size: 1.1rem;
+}
+
+/* Error message */
+.social-media-analysis-error-message {
+  background-color: #fed7d7;
+  border: 1px solid #feb2b2;
+  color: #c53030;
+  padding: 16px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  /* Added subtle shadow */
+  box-shadow: 0 2px 8px rgba(197, 48, 48, 0.1);
+}
+
+.social-media-analysis-error-icon {
+  /* Removed font-size as it's now handled by Lucide icon size prop */
+  color: #c53030;
+}
+
+.social-media-analysis-retry-btn {
+  margin-left: auto;
+  background-color: #c53030;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+.social-media-analysis-results-info {
+  text-align: center;
+}
+.social-media-analysis-retry-btn:hover {
+  background-color: #9b2c2c;
+}
+
+/* Controls section */
+.social-media-analysis-controls-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+  gap: 24px;
+  /* Added background and styling for better visual separation */
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 119, 182, 0.08);
+}
+
+.social-media-analysis-search-filter-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+/* Search box */
+.social-media-analysis-search-box {
+  position: relative;
+  min-width: 320px;
+}
+
+.social-media-analysis-search-input {
+  width: 100%;
+  padding: 14px 16px 14px 48px;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  font-size: 1rem;
+  background-color: white;
+  transition: all 0.2s;
+  /* Added subtle shadow */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.social-media-analysis-search-input:focus {
+  outline: none;
+  /* Updated focus color to ocean theme */
+  border-color: #0077b6;
+  box-shadow: 0 0 0 3px rgba(0, 119, 182, 0.1);
+}
+
+.social-media-analysis-search-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  /* Updated icon color */
+  color: #0077b6;
+}
+
+/* Filter buttons */
+.social-media-analysis-filter-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.social-media-analysis-filter-btn {
+  padding: 12px 18px;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  background-color: white;
+  color: #4a5568;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s;
+  white-space: nowrap;
+  /* Added subtle shadow */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.social-media-analysis-filter-btn:hover {
+  /* Updated hover colors to ocean theme */
+  border-color: #0077b6;
+  color: #0077b6;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 119, 182, 0.15);
+}
+
+.social-media-analysis-filter-btn.social-media-analysis-active {
+  /* Updated active colors to ocean theme */
+  background: linear-gradient(135deg, #0077b6 0%, #0096c7 100%);
+  border-color: #0077b6;
+  color: white;
+  box-shadow: 0 2px 8px rgba(0, 119, 182, 0.25);
+}
+
+/* Refresh button */
+.social-media-analysis-refresh-btn {
+  padding: 12px 20px;
+  /* Updated to ocean theme colors */
+  background: linear-gradient(135deg, #0077b6 0%, #0096c7 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 2px 8px rgba(0, 119, 182, 0.2);
+}
+
+.social-media-analysis-refresh-btn:hover {
+  /* Updated hover effect */
+  background: linear-gradient(135deg, #005577 0%, #0077b6 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 119, 182, 0.3);
+}
+
+/* Posts grid */
+.social-media-analysis-posts-grid {
+  display: grid;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+/* No posts message */
+.social-media-analysis-no-posts {
+  text-align: center;
+  padding: 60px 20px;
+  color: #718096;
+}
+
+.social-media-analysis-no-posts h3 {
+  margin-bottom: 8px;
+  color: #4a5568;
+}
+
+/* Post card */
+.social-media-analysis-post-card {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  /* Enhanced shadow with ocean theme */
+  box-shadow: 0 2px 12px rgba(0, 119, 182, 0.08);
+  border: 1px solid #e2e8f0;
+  transition: all 0.2s;
+}
+
+.social-media-analysis-post-card:hover {
+  /* Enhanced hover effect */
+  box-shadow: 0 8px 24px rgba(0, 119, 182, 0.15);
+  transform: translateY(-2px);
+  border-color: #0077b6;
+}
+
+/* Post header */
+.social-media-analysis-post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+  gap: 16px;
+}
+
+.social-media-analysis-subreddit-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.social-media-analysis-subreddit-name {
+  font-weight: 600;
+  /* Updated to ocean theme color */
+  color: #0077b6;
+  font-size: 1rem;
+}
+
+.social-media-analysis-post-date {
+  font-size: 0.875rem;
+  color: #718096;
+}
+
+/* Flood label */
+.social-media-analysis-flood-label {
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  white-space: nowrap;
+  /* Added subtle shadow */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.social-media-analysis-flood-label.social-media-analysis-flood-related {
+  /* Updated flood-related colors to ocean theme */
+  background: linear-gradient(135deg, #0077b6 0%, #0096c7 100%);
+  color: white;
+}
+
+.social-media-analysis-flood-label.social-media-analysis-not-flood-related {
+  background-color: #c6f6d5;
+  color: #276749;
+}
+
+/* Post content */
+.social-media-analysis-post-content {
+  margin-bottom: 16px;
+}
+
+.social-media-analysis-post-text {
+  color: #4a5568;
+  line-height: 1.6;
+  margin: 0;
+  font-size: 1rem;
+}
+
+/* Post footer */
+.social-media-analysis-post-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+  border-top: 1px solid #e2e8f0;
+  gap: 16px;
+}
+
+.social-media-analysis-coordinates {
+  font-size: 0.875rem;
+  color: #718096;
+  font-family: "Courier New", monospace;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Added styling for location icon */
+.social-media-analysis-location-icon {
+  color: #0077b6;
+}
+
+.social-media-analysis-source-link {
+  /* Updated to ocean theme colors */
+  color: #0077b6;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.875rem;
+  padding: 8px 16px;
+  border: 1px solid #0077b6;
+  border-radius: 8px;
+  transition: all 0.2s;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.social-media-analysis-source-link:hover {
+  /* Updated hover effect */
+  background: linear-gradient(135deg, #0077b6 0%, #0096c7 100%);
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 119, 182, 0.2);
+}
+
+/* Pagination */
+.social-media-analysis-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  /* Added background styling */
+  padding: 16px;
+  border-radius: 12px;
+}
+
+.social-media-analysis-pagination-btn {
+  padding: 10px 16px;
+  border: 1px solid #e2e8f0;
+  background-color: white;
+  color: #4a5568;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.social-media-analysis-pagination-btn:hover:not(:disabled) {
+  /* Updated hover colors */
+  border-color: #0077b6;
+  color: #0077b6;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 119, 182, 0.15);
+}
+
+.social-media-analysis-pagination-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.social-media-analysis-pagination-numbers {
+  display: flex;
+  gap: 4px;
+}
+
+.social-media-analysis-pagination-number {
+  padding: 10px 14px;
+  border: 1px solid #e2e8f0;
+  background-color: white;
+  color: #4a5568;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s;
+  min-width: 44px;
+  text-align: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.social-media-analysis-pagination-number:hover {
+  /* Updated hover colors */
+  border-color: #0077b6;
+  color: #0077b6;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 119, 182, 0.15);
+}
+
+.social-media-analysis-pagination-number.social-media-analysis-active {
+  /* Updated active colors */
+  background: linear-gradient(135deg, #0077b6 0%, #0096c7 100%);
+  border-color: #0077b6;
+  color: white;
+  box-shadow: 0 2px 8px rgba(0, 119, 182, 0.25);
+}
+
+/* Responsive design */
+@media (max-width: 1200px) {
+  .social-media-analysis-container {
+    /* Updated responsive margin */
+    margin-left: 220px; /* Smaller sidebar on medium screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .social-media-analysis-container {
+    margin-left: 0; /* No sidebar offset on mobile */
+    padding: 16px;
+  }
+
+  /* Updated header for mobile */
+  .social-media-analysis-header {
+    padding: 20px;
+  }
+
+  .social-media-analysis-header h1 {
+    font-size: 2rem;
+  }
+
+  .social-media-analysis-controls-section {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+    padding: 16px;
+  }
+
+  .social-media-analysis-search-filter-container {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .social-media-analysis-search-box {
+    min-width: auto;
+  }
+
+  .social-media-analysis-filter-buttons {
+    justify-content: center;
+  }
+
+  .social-media-analysis-post-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .social-media-analysis-post-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .social-media-analysis-pagination {
+    flex-wrap: wrap;
+  }
+
+  .social-media-analysis-pagination-numbers {
+    order: -1;
+  }
+}
+
+@media (max-width: 480px) {
+  .social-media-analysis-container {
+    padding: 12px;
+  }
+
+  .social-media-analysis-header h1 {
+    font-size: 1.75rem;
+  }
+
+  .social-media-analysis-post-card {
+    padding: 16px;
+  }
+
+  .social-media-analysis-filter-buttons {
+    flex-direction: column;
+  }
+
+  .social-media-analysis-filter-btn {
+    text-align: center;
+  }
+}
+
+/* Dark mode support (optional) */
+@media (prefers-color-scheme: dark) {
+  .social-media-analysis-container {
+    background-color: #1a202c;
+  }
+
+  .social-media-analysis-header h1 {
+    color: #f7fafc;
+  }
+
+  .social-media-analysis-header p {
+    color: #a0aec0;
+  }
+
+  .social-media-analysis-post-card {
+    background-color: #2d3748;
+    border-color: #4a5568;
+    color: #f7fafc;
+  }
+
+  .social-media-analysis-search-input {
+    background-color: #2d3748;
+    border-color: #4a5568;
+    color: #f7fafc;
+  }
+
+  .social-media-analysis-search-input::placeholder {
+    color: #a0aec0;
+  }
+
+  .social-media-analysis-filter-btn {
+    background-color: #2d3748;
+    border-color: #4a5568;
+    color: #f7fafc;
+  }
+
+  .social-media-analysis-pagination-btn,
+  .social-media-analysis-pagination-number {
+    background-color: #2d3748;
+    border-color: #4a5568;
+    color: #f7fafc;
+  }
+}

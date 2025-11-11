@@ -8,6 +8,9 @@ import LoginForm from "./components/Login/LoginForm";
 import SignupForm from "./components/Signup/SignupForm";
 import ApproveUsers from "./components/ApproveUsers/ApproveUsers";
 import AlertComponent from "./components/AlertComponent/AlertComponent";
+import ViewReports from "./components/ViewReport/ViewReport";
+import SocialMediaAnalysis from "./components/SocialMediaAnalysisComponent/SocialMediaAnalysis";
+import CallReports from "./components/CallReports/CallReports";
 const App = () => {
   const location = useLocation();
   const hideSidebarRoutes = ["/", "/login", "/signup"];
@@ -24,6 +27,12 @@ const App = () => {
         <Route path="/signup" element={<SignupForm />} />
         <Route path="/create-alert" element={<AlertComponent />} />
         <Route path="/approve-users" element={<ApproveUsers />} />
+        <Route path="/reports" element={<ViewReports />} />
+        <Route path="/Call-reports" element={<CallReports />} />
+        <Route
+          path="/social-media-analysis"
+          element={<SocialMediaAnalysis />}
+        />
       </Routes>
     </div>
   );

@@ -47,3 +47,28 @@ exports.getNearbyReports = async (req, res) => {
     res.status(500).json({ msg: err.message });
   }
 };
+
+exports.updateVerificationStatus = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { isVerified } = req.body;
+
+    const report = await Report.findByIdAndUpdate(
+      id,
+      { isVerified },
+      { new: true }
+    );
+
+    if (!report) {
+      return res.status(404).json({ message: "Report not found" });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "Verification status updated successfully",
+      report,
+    });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};

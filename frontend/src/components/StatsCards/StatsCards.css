@@ -68,3 +68,29 @@
     padding: 16px;
   }
 }
+
+/**************************Additional Styles ****************************/
+
+/* Keep all your existing CSS exactly the same and add these new styles */
+
+.stats-loading {
+  opacity: 0.7;
+}
+
+.stats-loading .stats-count {
+  color: #6b7280;
+}
+
+.stats-error {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  color: #dc2626;
+  font-size: 1rem;
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+}

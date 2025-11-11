@@ -486,9 +486,9 @@
 
 /* Large Desktop */
 @media (min-width: 1400px) {
-  .approve-users-wrapper {
+  /* .approve-users-wrapper {
     margin-left: 300px; /* Adjust for larger sidebar if needed */
-  }
+  } */
 
   .users-grid {
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));

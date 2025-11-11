@@ -1,50 +1,78 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { AlertTriangle, Clock, MapPin } from "lucide-react";
 import "./ActiveAlerts.css";
 
 const ActiveAlerts = () => {
-  const alertsData = [
-    {
-      id: 1,
-      type: "Red Alert",
-      severity: "Warning",
-      title: "High Wave Alert",
-      date: "29 Aug 2025",
-      location: "23B Marine Drive, Besant Nagar, Chennai, Tamil Nadu - 600090",
-    },
-    {
-      id: 2,
-      type: "Red Alert",
-      severity: "Warning",
-      title: "Storm Surge Alert",
-      date: "30 Aug 2025",
-      location: "Marina Beach, Chennai, Tamil Nadu - 600001",
-    },
-    {
-      id: 3,
-      type: "Orange Alert",
-      severity: "Caution",
-      title: "Coastal Flooding Risk",
-      date: "31 Aug 2025",
-      location: "ECR Road, Mahabalipuram, Tamil Nadu - 603104",
-    },
-    {
-      id: 4,
-      type: "Red Alert",
-      severity: "Warning",
-      title: "Tsunami Warning",
-      date: "01 Sep 2025",
-      location: "Puducherry Beach, Puducherry - 605001",
-    },
-    {
-      id: 5,
-      type: "Yellow Alert",
-      severity: "Advisory",
-      title: "High Tide Alert",
-      date: "02 Sep 2025",
-      location: "Kovalam Beach, Chennai, Tamil Nadu - 600041",
-    },
-  ];
+  const [alertsData, setAlertsData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  // Function to format date
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const options = { day: "2-digit", month: "short", year: "numeric" };
+    return date.toLocaleDateString("en-GB", options);
+  };
+
+  // Function to map alert types and add severity
+  const mapAlertData = (backendAlert) => {
+    let severity;
+    switch (backendAlert.type) {
+      case "Red Alert":
+        severity = "Warning";
+        break;
+      case "Orange Alert":
+        severity = "Caution";
+        break;
+      case "Yellow Alert":
+        severity = "Advisory";
+        break;
+      default:
+        severity = "Warning";
+    }
+
+    return {
+      id: backendAlert._id,
+      type: backendAlert.type,
+      severity: severity,
+      title: backendAlert.title,
+      date: formatDate(backendAlert.createdAt),
+      location: backendAlert.location,
+    };
+  };
+
+  // Fetch alerts from backend
+  const fetchAlerts = async () => {
+    try {
+      setLoading(true);
+      // Replace with your actual API endpoint
+      const response = await axios.get("http://localhost:3000/alerts");
+
+      if (response.data.success) {
+        const mappedAlerts = response.data.data
+          .filter((alert) => alert.isActive)
+          .map(mapAlertData);
+        setAlertsData(mappedAlerts);
+      } else {
+        setError("Failed to fetch alerts");
+      }
+    } catch (err) {
+      setError("Error connecting to server");
+      console.error("Error fetching alerts:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchAlerts();
+
+    // Set up polling for real-time updates (every 30 seconds)
+    const interval = setInterval(fetchAlerts, 30000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   const getAlertStyles = (alertType) => {
     switch (alertType) {
@@ -75,55 +103,77 @@ const ActiveAlerts = () => {
     }
   };
 
+  if (loading) {
+    return (
+      <div className="activeAlert-container">
+        <h2 className="activeAlert-title">Active Alerts</h2>
+        <div className="activeAlert-loading">Loading alerts...</div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="activeAlert-container">
+        <h2 className="activeAlert-title">Active Alerts</h2>
+        <div className="activeAlert-error">{error}</div>
+      </div>
+    );
+  }
+
   return (
     <div className="activeAlert-container">
       <h2 className="activeAlert-title">Active Alerts</h2>
 
       <div className="activeAlert-scrollContainer">
-        {alertsData.map((alert) => {
-          const styles = getAlertStyles(alert.type);
+        {alertsData.length === 0 ? (
+          <div className="activeAlert-empty">No active alerts</div>
+        ) : (
+          alertsData.map((alert) => {
+            const styles = getAlertStyles(alert.type);
 
-          return (
-            <div key={alert.id} className="activeAlert-card">
-              <div
-                className="activeAlert-header"
-                style={{ background: styles.headerBg }}
-              >
-                <span className="activeAlert-badge">{alert.type}</span>
-              </div>
+            return (
+              <div key={alert.id} className="activeAlert-card">
+                <div
+                  className="activeAlert-header"
+                  style={{ background: styles.headerBg }}
+                >
+                  <span className="activeAlert-badge">{alert.type}</span>
+                </div>
 
-              <div
-                className="activeAlert-content"
-                style={{ background: styles.contentBg }}
-              >
-                <div className="activeAlert-iconTitle">
-                  <AlertTriangle
-                    className="activeAlert-warningIcon"
-                    size={20}
-                    style={{ color: styles.iconColor }}
-                  />
-                  <span
-                    className="activeAlert-type"
-                    style={{ color: styles.iconColor }}
-                  >
-                    {alert.severity}
-                  </span>
-                  <div className="activeAlert-time">
-                    <Clock size={16} />
-                    <span>{alert.date}</span>
+                <div
+                  className="activeAlert-content"
+                  style={{ background: styles.contentBg }}
+                >
+                  <div className="activeAlert-iconTitle">
+                    <AlertTriangle
+                      className="activeAlert-warningIcon"
+                      size={20}
+                      style={{ color: styles.iconColor }}
+                    />
+                    <span
+                      className="activeAlert-type"
+                      style={{ color: styles.iconColor }}
+                    >
+                      {alert.severity}
+                    </span>
+                    <div className="activeAlert-time">
+                      <Clock size={16} />
+                      <span>{alert.date}</span>
+                    </div>
+                  </div>
+
+                  <h3 className="activeAlert-alertTitle">{alert.title}</h3>
+
+                  <div className="activeAlert-location">
+                    <MapPin size={16} />
+                    <span>{alert.location}</span>
                   </div>
                 </div>
-
-                <h3 className="activeAlert-alertTitle">{alert.title}</h3>
-
-                <div className="activeAlert-location">
-                  <MapPin size={16} />
-                  <span>{alert.location}</span>
-                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })
+        )}
       </div>
     </div>
   );

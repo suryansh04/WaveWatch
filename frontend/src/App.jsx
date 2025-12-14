@@ -61,11 +61,8 @@ import CallReports from "./components/CallReports/CallReports";
 
 // NEW: Analyst Dashboard imports
 import AnalystDashboard from "./Pages/AnalystDashboard/AnalystDashboard";
-import AnalystReports from "./components/AnalystReports/AnalystReports";
-import AnalystMap from "./components/AnalystMap/AnalystMap";
-import AnalystCallReports from "./components/AnalystCallReports/AnalystCallReports";
 import SmsReports from "./components/SMSReports/SmsReports";
-import AnalysisPage from "./components/AnalysisPage/AnalysisPage";
+// import AnalysisPage from "./components/AnalysisPage/AnalysisPage";
 const App = () => {
   const location = useLocation();
 
@@ -107,7 +104,7 @@ const App = () => {
 
         {/* Analyst Routes */}
         <Route path="/analyst-dashboard" element={<AnalystDashboard />} />
-        <Route path="/analyst-analysis" element={<AnalysisPage />} />
+        {/* <Route path="/analyst-analysis" element={<AnalysisPage />} /> */}
       </Routes>
     </div>
   );

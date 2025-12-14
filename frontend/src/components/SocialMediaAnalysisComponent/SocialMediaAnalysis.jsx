@@ -303,7 +303,6 @@ const SocialMediaAnalysis = () => {
       return { name: "Reddit", icon: <Hash size={16} />, color: "#ff4500" };
     }
   };
-
   const getEngagementMetrics = (post) => {
     const platform = post.platform;
 
@@ -312,22 +311,22 @@ const SocialMediaAnalysis = () => {
         {
           icon: <ThumbsUp size={20} />,
           label: "Likes",
-          value: post.n_yt_likes || 0,
+          value: post.likes || 0,
         },
         {
           icon: <MessageCircle size={20} />,
           label: "Comments",
-          value: post.n_yt_comments || 0,
+          value: post.comments || 0,
         },
         {
           icon: <Eye size={20} />,
-          label: "Views",
-          value: post.n_yt_views || 0,
+          label: "Shares",
+          value: post.shares || 0,
         },
         {
           icon: <Activity size={20} />,
           label: "Engagement",
-          value: post.engagement_score?.toFixed(2) || 0,
+          value: post.engagementScore?.toFixed(2) || 0,
         },
       ];
     } else if (platform === "X") {
@@ -335,22 +334,22 @@ const SocialMediaAnalysis = () => {
         {
           icon: <Heart size={20} />,
           label: "Likes",
-          value: post.yt_like_count || 0,
+          value: post.likes || 0,
         },
         {
           icon: <MessageCircle size={20} />,
           label: "Comments",
-          value: post.yt_comment_count || 0,
+          value: post.comments || 0,
         },
         {
           icon: <Eye size={20} />,
-          label: "Views",
-          value: post.yt_view_count || 0,
+          label: "Shares",
+          value: post.shares || 0,
         },
         {
           icon: <Activity size={20} />,
           label: "Engagement",
-          value: post.engagement_score?.toFixed(2) || 0,
+          value: post.engagementScore?.toFixed(2) || 0,
         },
       ];
     } else {
@@ -359,23 +358,23 @@ const SocialMediaAnalysis = () => {
         {
           icon: <ArrowUp size={20} />,
           label: "Likes",
-          value: post.reddit_score || 0,
+          value: post.likes || 0,
         },
         {
           icon: <MessageCircle size={20} />,
           label: "Comments",
-          value: post.reddit_num_comments || 0,
+          value: post.comments || 44,
         },
         {
           icon: <TrendingUp size={20} />,
           label: "Upvote Ratio",
-          value: post.reddit_upvote_ratio
-            ? `${(post.reddit_upvote_ratio * 100).toFixed(0)}%`
+          value: post.upvoteRatio
+            ? `${(post.upvoteRatio * 100).toFixed(0)}%`
             : "0%",
         },
         {
           icon: <Activity size={20} />,
-          label: "Engagement ratio",
+          label: "Engagement Score",
           value: post.engagementScore?.toFixed(2) || 0,
         },
       ];

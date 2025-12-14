@@ -1708,7 +1708,7 @@ const ViewReports = () => {
         `http://localhost:3000/reports/${reportId}/nearby-social`,
         {
           params: {
-            radiusKm: 50, // 50km radius
+            radiusKm: 200, // 50km radius
           },
         }
       );
@@ -1743,8 +1743,7 @@ const ViewReports = () => {
       month: "short",
       day: "numeric",
     });
-  };
-  // Format date
+  }; // Format date
   const formatDate = (dateString) => {
     return new Date(dateString).toLocaleDateString("en-US", {
       year: "numeric",
@@ -2515,7 +2514,7 @@ const ViewReports = () => {
                                 r/{post.subreddit || "unknown"}
                               </div>
                               <div className="view-reports-comp-social-date">
-                                {formatSocialMediaDate(post.date)}
+                                {formatSocialMediaDate(post.postTimestamp)}
                               </div>
                             </div>
 

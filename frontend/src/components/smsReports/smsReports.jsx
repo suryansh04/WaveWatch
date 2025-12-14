@@ -65,7 +65,9 @@ const SmsReports = () => {
           createdAt: report.receivedAt || report.createdAt,
           urgency: report.urgency,
           isProcessed: report.isProcessedToMainReport,
-          coordinates: report.location?.coordinates || [0, 0],
+          coordinates: report.location?.coordinates || null,
+          latitude: report.location?.coordinates?.[1] || null,
+          longitude: report.location?.coordinates?.[0] || null,
         }));
 
         setReports(mappedReports);
@@ -349,7 +351,11 @@ const SmsReports = () => {
                       <div className="smsReports-infoRow">
                         <MapPin size={16} className="smsReports-infoIcon" />
                         <span className="smsReports-infoText">
-                          {report.location}
+                          {report.latitude && report.longitude
+                            ? `${report.latitude.toFixed(
+                                6
+                              )}°N, ${report.longitude.toFixed(6)}°E`
+                            : "No coordinates available"}
                         </span>
                       </div>
 

@@ -34,7 +34,7 @@ const AnalystSidebar = () => {
 
   const navItems = [
     { name: "Dashboard", icon: LayoutDashboard, path: "/analyst-dashboard" },
-    { name: "Analysis", icon: FileBarChart, path: "/analyst-analysis" },
+    // { name: "Analysis", icon: FileBarChart, path: "/analyst-analyst" },
   ];
 
   return (

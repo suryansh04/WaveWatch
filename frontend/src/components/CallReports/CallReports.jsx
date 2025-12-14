@@ -881,14 +881,14 @@ const CallReports = () => {
                         </div>
                       </div>
 
-                      <div className="callReports-reportActions">
+                      {/* <div className="callReports-reportActions">
                         <button className="callReports-actionBtn callReports-primary">
                           View Details
                         </button>
                         <button className="callReports-actionBtn callReports-secondary">
                           Create Alert
                         </button>
-                      </div>
+                      </div> */}
                     </div>
                   ))}
                 </div>

@@ -1,4 +1,4 @@
-# WaveWatch (SIH 2025 Winner PS ID-SIH25039)
+# WaveWatch
 
 WaveWatch is a full-stack coastal hazard monitoring and reporting platform built for Smart India Hackathon (SIH).
 It enables real-time hazard reporting,social media analysis, and interactive geospatial visualization for analysts and administrators. This project is developed for the Smart India Hackathon (SIH) 2025.
